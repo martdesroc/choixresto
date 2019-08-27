@@ -1,0 +1,36 @@
+﻿
+@model ChoixResto.ViewModels.AccueilViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Je suis la vue index</div>
+    <table>
+        
+        @Html.DropDownList("RestoChoisi", (SelectList)ViewBag.ListeDesRestos)
+
+        @Html.Partial("Connexion", Model)
+
+        @Html.Action("AfficheListeRestaurant")
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿@model ChoixResto.Models.Resto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreerRestaurant</title>
+
+    <!-- Ne fonctionne pas ?!? -->
+    <script type="text/javascript">
+    jQuery.validator.addMethod("verifcontact",
+    function (value, element, params) {
+        var tel = $("#" + params.parametre1).val();
+        var email = $("#" + params.parametre2).val();
+        return tel != '' || email != '';
+    });
+
+    jQuery.validator.unobtrusive.adapters.add
+        ("verifcontact", ["parametre1", "parametre2"], function (options) {
+            options.rules["verifcontact"] = options.params;
+            options.messages["verifcontact"] = options.message;
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <fieldset>
+                <legend>Ajouter un restaurant</legend>
+
+                <div>
+                    @Html.LabelFor(model => model.Nom)
+                    @Html.TextBoxFor(model => model.Nom)
+                    @Html.ValidationMessageFor(model => model.Nom)
+                </div>
+                <div>
+                    @*@Html.LabelFor(model => model.Telephone)
+        @Html.TextBoxFor(model => model.Telephone)
+        @Html.ValidationMessageFor(model => model.Telephone)*@
+
+                    @*<input data-val="true" data-val-regex="Le numéro de téléphone est incorrect"
+               data-val-regex-pattern="^0[0-9]{9}$"
+               data-val-verifcontact="Vous devez saisir au moins un moyen de contacter le restaurant"
+               data-val-verifcontact-parametre1="Telephone"
+               data-val-verifcontact-parametre2="Email"
+               id="Telephone" name="Telephone" type="text" value="" />
+
+        <input data-val="true" data-val-verifcontact="Vous devez saisir au moins un moyen de contacter le restaurant"
+               data-val-verifcontact-parametre1="Telephone"
+               data-val-verifcontact-parametre2="Email"
+               id="Email" name="Email" type="text" value="" />*@
+                    @Html.LabelFor(model => model.Telephone)
+                    @Html.TextBoxFor(model => model.Telephone,
+                        new
+                             {
+                                 data_val_verifcontact = "F-E msg: Vous devez saisir au moins un moyen de contacter le restaurant",
+                            data_val_verifcontact_parametre1 = "Telephone",
+                            data_val_verifcontact_parametre2 = "Email"
+                             })
+                    @Html.ValidationMessageFor(model => model.Telephone)
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.Email)
+                    @Html.TextBoxFor(model => model.Email,
+                        new
+                             {
+                                 data_val = "true",
+                                 data_val_verifcontact = "F-E msg: Vous devez saisir au moins un moyen de contacter le restaurant",
+                            data_val_verifcontact_parametre1 = "Telephone",
+                            data_val_verifcontact_parametre2 = "Email"
+                             })
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+                <br />
+                <input type="submit" value="Ajouter" />
+            </fieldset>
+        }
+    </div>
+</body>
+</html>
