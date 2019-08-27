@@ -10,7 +10,7 @@ namespace ChoixResto.Controllers
 {
     public class AccueilController : Controller
     {
-        // GET: Accueil
+        // GET: Accueil2
         public ActionResult Index()
         {
             // Affichage de la liste 
