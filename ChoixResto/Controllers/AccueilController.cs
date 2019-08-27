@@ -10,14 +10,14 @@ namespace ChoixResto.Controllers
 {
     public class AccueilController : Controller
     {
-        // GET: Accueil2
+        // GET: Accueil3
         public ActionResult Index()
         {
             // Affichage de la liste 
             //AccueilViewModel vm = new AccueilViewModel
             //{
             //    Message = "Bonjour depuis le <span style=\"color:red\">contrôleur</span>",
-            //    Date = DateTime.Now,
+            //    Date = DateTime.Now, aaaaa11
             //    ListeDesRestos = new List<Resto>
             //    {
             //        new Resto { Nom = "Resto pinambour", Telephone = "1234" },
